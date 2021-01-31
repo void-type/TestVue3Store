@@ -1,23 +1,13 @@
 import StoreAbstract from './StoreAbstract';
 import Recipe from './Recipe';
 
-interface RecipeStoreModel extends Object {
+interface RecipeState extends Object {
   recipes: Array<Recipe>;
   recentRecipes: Array<Recipe>;
   recentRecipesLimit: number;
 }
 
-class RecipeStore extends StoreAbstract<RecipeStoreModel> {
-  /* eslint-disable class-methods-use-this */
-  protected data(): RecipeStoreModel {
-    return {
-      recipes: [],
-      recentRecipes: [],
-      recentRecipesLimit: 6,
-    };
-  }
-  /* eslint-enable class-methods-use-this */
-
+class RecipeStore extends StoreAbstract<RecipeState> {
   setRecipes(recipes: Array<Recipe>) {
     this.state.recipes = recipes;
   }
@@ -31,6 +21,10 @@ class RecipeStore extends StoreAbstract<RecipeStoreModel> {
   }
 }
 
-const recipeStore: RecipeStore = new RecipeStore();
+const recipeStore: RecipeStore = new RecipeStore({
+  recipes: [],
+  recentRecipes: [],
+  recentRecipesLimit: 3,
+});
 
 export default recipeStore;

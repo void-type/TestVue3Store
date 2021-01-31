@@ -4,12 +4,9 @@ import { reactive, readonly } from 'vue';
 export default abstract class StoreAbstract<T extends Record<string, any>> {
   protected state: T;
 
-  constructor() {
-    const data = this.data();
-    this.state = reactive(data) as T;
+  constructor(initialState: T) {
+    this.state = reactive(initialState) as T;
   }
-
-  protected abstract data(): T
 
   public getState(): T {
     return readonly(this.state) as T;

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="newRec()">Create</button>
+    <button @click="newRecipe()">Create</button>
     <ul>
-      <li v-for="rec in recipes" :key="rec.name">{{rec.name}}</li>
+      <li v-for="recipe in recipes" :key="recipe.name">{{recipe.name}}</li>
     </ul>
   </div>
 </template>
@@ -24,12 +24,11 @@ export default defineComponent({
     },
   },
   methods: {
-    newRec() {
+    newRecipe() {
       recipeStore.addToRecent({
         name: String(this.current),
         description: 'hi',
       });
-      console.log(this.current);
       this.current += 1;
     },
   },
