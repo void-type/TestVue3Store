@@ -9,15 +9,15 @@ interface RecipeState extends Object {
 
 class RecipeStore extends StoreAbstract<RecipeState> {
   setRecipes(recipes: Array<Recipe>) {
-    this.state.recipes = recipes;
+    this.internalState.recipes = recipes;
   }
 
   addToRecent(recipe: Recipe) {
-    const recentRecipes = this.state.recentRecipes.slice();
-    const limit = this.state.recentRecipesLimit;
+    const recentRecipes = this.internalState.recentRecipes.slice();
+    const limit = this.internalState.recentRecipesLimit;
 
     recentRecipes.unshift(recipe);
-    this.state.recentRecipes = recentRecipes.slice(0, limit);
+    this.internalState.recentRecipes = recentRecipes.slice(0, limit);
   }
 }
 

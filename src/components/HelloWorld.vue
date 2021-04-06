@@ -20,7 +20,7 @@ export default defineComponent({
   },
   computed: {
     recipes() {
-      return recipeStore.getState().recentRecipes;
+      return recipeStore.state.recentRecipes;
     },
   },
   methods: {
